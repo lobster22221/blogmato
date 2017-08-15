@@ -28,3 +28,7 @@ Route::get('/external',
         });
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
