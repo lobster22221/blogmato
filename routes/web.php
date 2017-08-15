@@ -11,13 +11,20 @@
 |
 */
 
-route::get('/','BlogPostsController@index');
+route::get('/','PostsController@index');
 
 //posts
-Route::get('/posts','BlogPostsController@index');
-Route::post('/posts', 'BlogPostsController@store');
-//posts/create
-Route::get('/posts/create','BlogPostsController@create');
+Route::get('/posts','PostsController@index');
+Route::post('/posts', 'PostsController@store');
+Route::get('/posts/create','PostsController@create');
+Route::get('/posts/{id}','PostsController@show');
+Route::post('/posts/{id}/comments','CommentsController@store');
 
-Route::get('/posts/{id}','BlogPostsController@show');
+Route::get('/external', 
+        function(){
+            
+           return Redirect::to('http://www.google.com');
+   
+        });
+
 

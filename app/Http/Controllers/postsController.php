@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\blogPosts;
-class BlogPostsController extends Controller
+use App\Models\Post;
+class PostsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,10 @@ class BlogPostsController extends Controller
      */
     public function index()
     {
-        $blogPost =  DB::table('blog_posts')->get();
+        $posts = Post::all();
        
-        return view('layouts.blog', ['blogpost' => $blogPost]);
+        //dd( $posts);
+        return view('layouts.blog.blog', ['posts' => $posts]);
        // 
        // return $post;
     }
@@ -30,7 +31,7 @@ class BlogPostsController extends Controller
     public function create()
     {
       
-        return view('layouts.blogmake', []);
+        return view('layouts.blog.blogmake', []);
     }
 
     /**
@@ -41,11 +42,11 @@ class BlogPostsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate(request(), [
+       $this->validate(request(), [
             'title' => 'required|max:255',
             'body' => 'required',
         ]);
-        $blogpost = new blogPosts();
+        $blogpost = new Post();
         $blogpost->postName = request('title');
         $blogpost->postContent = request('body');
         $blogpost->user_id = 1;
@@ -61,9 +62,9 @@ class BlogPostsController extends Controller
      */
     public function show( $id)
     { 
-         $blogPost =  DB::table('blog_posts')->where('id', $id)->get();
+      //$bPost =  DB::table('posts')->where('id', $id)->get();
        
-        return view('layouts.blog', ['blogpost' => $blogPost]);
+        //return view('layouts.blog', ['post' => $Post]);
         //$name = 'test';
         //return view('blog',post);
     }
