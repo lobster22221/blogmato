@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-use App\blogPosts;
+use App\Models\blogPosts;
 class BlogPostsController extends Controller
 {
     /**
@@ -41,6 +41,10 @@ class BlogPostsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate(request(), [
+            'title' => 'required|max:255',
+            'body' => 'required',
+        ]);
         $blogpost = new blogPosts();
         $blogpost->postName = request('title');
         $blogpost->postContent = request('body');

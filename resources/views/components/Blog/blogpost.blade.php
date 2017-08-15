@@ -4,3 +4,5 @@
               
             <p> {{$post->postContent}}</p>
           </div><!-- /.blog-post -->
+          
+          

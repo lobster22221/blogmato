@@ -8,7 +8,7 @@
       
     <label for="title">Title</label>
     
-    <input type="text" class="form-control" id="title" name="title" placeholder="title">
+    <input type="text" class="form-control" id="title" name="title" placeholder="title" required>
   </div>
     
  <div class="form-group">
@@ -18,4 +18,5 @@
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
+@include('components.error')
 @endsection
