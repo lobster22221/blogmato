@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-use App\Models\Comment;
-class CommentsController extends Controller
-{ public function __construct()
-        
+use App\Models\Post;
+use Carbon\Carbon;
+class PostsController extends Controller
+{
+    
+    public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['index', 'show']);
     }
     /**
      * Display a listing of the resource.
@@ -18,7 +21,13 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        //
+        
+        
+        $posts = Post::latest()
+                ->filter(request(['Month', 'Year']))
+                ->get();
+        return view('layouts.blog.blog', ['posts' => $posts]);
+       
     }
 
     /**
@@ -28,7 +37,8 @@ class CommentsController extends Controller
      */
     public function create()
     {
-        //
+      
+        return view('layouts.blog.blogmake', []);
     }
 
     /**
@@ -39,16 +49,16 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-         $this->validate(request(), [            
+       $this->validate(request(), [
+            'title' => 'required|max:255',
             'body' => 'required',
         ]);
-        $Comment = new Comment();
-       
-        $Comment->body = request('body');
-        $Comment->post_id = $request->id;
-        $Comment->user_id = auth()->id();
-        $Comment->save();
-        return back();
+        $blogpost = new Post();
+        $blogpost->postName = request('title');
+        $blogpost->postContent = request('body');
+        $blogpost->user_id = auth()->id();
+        $blogpost->save();
+        return redirect('/');
     }
 
     /**
@@ -57,9 +67,12 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show( $id)
+    { 
+      $posts = Post::find($id);
+       
+        //dd( $posts);
+        return view('layouts.blog.blog', ['posts' => [$posts]]);
     }
 
     /**
@@ -82,7 +95,11 @@ class CommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+        $post->postName = $request->get('title');
+        $post->postContent = $request->get('body');
+        $post->save();
+        return redirect('/');
     }
 
     /**

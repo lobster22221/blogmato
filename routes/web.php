@@ -15,13 +15,13 @@ route::get('/','PostsController@index');
 
 //posts
 Route::get('/posts','PostsController@index');
-Route::post('/posts', 'PostsController@store');
 Route::get('/posts/create','PostsController@create');
 Route::get('/posts/{id}','PostsController@show');
+
 Route::post('/posts/{id}/comments','CommentsController@store');
+Route::post('/posts', 'PostsController@store');
 
-Route::get('/admin', 'admin\adminController@index');
-
+Route::post('admin/posts/edit/{id}','PostsController@update');
         
 
 

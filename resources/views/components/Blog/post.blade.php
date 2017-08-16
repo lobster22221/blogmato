@@ -1,7 +1,7 @@
 <div class="blog-post">
 
-            <h2 class="blog-post-title">{{$post->postName}}</h2>
-            <p class="blog-post-meta">{{$post->created_at->diffForHumans()}} by <a href="#">{{$post->user->name}}</a></p>
+    <a href="/posts/{{$post->id}}"<h2 class="blog-post-title">{{$post->postName}}</h2></a> 
+            <p class="blog-post-meta">{{$post->updated_at->diffForHumans()}} by <a href="#">{{$post->user->name}}</a></p>
               
             <p> {{$post->postContent}}</p>
           </div><!-- /.blog-post -->
@@ -20,7 +20,10 @@
           
           <div class="comments">  
           @foreach($post->comments as $comment)
-          {{ $comment->body }}
+          <div id="comment">
+              <a href ="#">{{$comment->user->name}} </a> says: 
+              <br> &nbsp&nbsp{{$comment->body}}
+          </div>
           @endforeach
       
   </div>

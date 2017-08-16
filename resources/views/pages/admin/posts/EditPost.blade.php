@@ -1,7 +1,14 @@
-@extends('layouts.layout')
-<hr>
-@section('content')
-<form method="POST" id ="createPost" action='/posts'>
+@extends('layouts.admin.admin')
+
+@section ('header')
+Edit post
+@endsection
+
+@section ('content')
+
+
+<div class='postContent'>
+    <form method="POST" {{action('PostsController@update', $post, $id)}}>
     {{ csrf_field() }}
     
   <div class="form-group">
@@ -17,6 +24,8 @@
  </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+ 
+   
+</div>
 
-@include('components.error')
 @endsection
