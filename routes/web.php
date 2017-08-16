@@ -20,13 +20,9 @@ Route::get('/posts/create','PostsController@create');
 Route::get('/posts/{id}','PostsController@show');
 Route::post('/posts/{id}/comments','CommentsController@store');
 
-Route::get('/external', 
-        function(){
-            
-           return Redirect::to('http://www.google.com');
-   
-        });
+Route::get('/admin', 'admin\adminController@index');
 
+        
 
 
 Auth::routes();

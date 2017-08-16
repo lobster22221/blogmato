@@ -7,9 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     //protected $table = "comments";
-    public function blogPosts()
+    public function post()
     {
-        echo "hi";
-        return $this->belongsTo(Posts::class);
+        
+        return $this->belongsTo(Post::class);
+    }
+    
+    public function user()
+    {
+        
+        return $this->belongsTo(User::class);
     }
 }

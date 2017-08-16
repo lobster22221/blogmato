@@ -11,7 +11,7 @@ class PostsController extends Controller
     
     public function __construct()
     {
-        
+        $this->middleware('auth')->except(['index', 'show']);
     }
     /**
      * Display a listing of the resource.
@@ -54,7 +54,7 @@ class PostsController extends Controller
         $blogpost = new Post();
         $blogpost->postName = request('title');
         $blogpost->postContent = request('body');
-        $blogpost->user_id = 1;
+        $blogpost->user_id = auth()->id();
         $blogpost->save();
         return redirect('/');
     }
