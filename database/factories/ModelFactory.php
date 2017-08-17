@@ -22,3 +22,15 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
+    
+    
+    return [
+        'postName' => (string)$faker->sentence,
+        'postContent' => (string)$faker->paragraphs(10, true),
+        'user_id' => (string)rand(1,50),
+        'created_at' =>(string)$faker->dateTimeThisDecade->format('Y-m-d H:i:s')
+        
+    ];
+});
