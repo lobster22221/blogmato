@@ -11,9 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+route::get('/','PostsController@index');
+
+//posts
+Route::get('/posts','PostsController@index');
+Route::get('/posts/create','PostsController@create');
+Route::get('/posts/{id}','PostsController@show');
+
+Route::post('/posts/{id}/comments','CommentsController@store');
+Route::post('/posts', 'PostsController@store');
+
+Route::post('admin/posts/edit/{id}','PostsController@update');
+        
+
 
 Auth::routes();
 
