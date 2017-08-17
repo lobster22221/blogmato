@@ -5,7 +5,7 @@
   
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     
-    <a class="dropdown-item" href="#">Profile</a>
+    <a class="dropdown-item" href="/user">Profile</a>
     <a class="dropdown-item" href="#" onclick="lfrm.submit();">Logout</a> <form  hidden id="lfrm" action="{{ route('logout') }}" method="POST">{{ csrf_field() }}    </form>
   </div>
       

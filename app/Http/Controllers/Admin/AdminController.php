@@ -23,6 +23,13 @@ class AdminController extends Controller
         return view('pages.admin.index');
     }
     
+    public function Settings()
+    {
+         return view('pages.admin.settings.settings');
+    }
+    
+    
+    
      public function posts()
     {
          $posts = Post::where('user_id', auth()->id())->get();

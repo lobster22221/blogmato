@@ -23,8 +23,19 @@ Route::post('/posts', 'PostsController@store');
 
 Route::post('admin/posts/edit/{id}','PostsController@update');
         
+//profiles
+
+Route::get('/user','UsersController@index');
+
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+ 
+Route::get('/fileentry', 'FileEntryController@index');
+Route::get('/fileentry/get/{filename}', [
+	'as' => 'getentry', 'uses' => 'FileEntryController@get']);
+Route::post('/fileentry/add',[ 
+        'as' => 'addentry', 'uses' => 'FileEntryController@add']);

@@ -12,5 +12,6 @@
 */
 
 Route::get('/admin', 'Admin\adminController@index');
+Route::get('/admin/settings', 'Admin\adminController@settings');
 Route::get('/admin/posts', 'Admin\adminController@posts');
 Route::get('/admin/posts/edit/{id}', 'Admin\adminController@postedit');

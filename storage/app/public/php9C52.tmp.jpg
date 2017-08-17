@@ -1,0 +1,6 @@
+SELECT
+year(created_at) year,
+monthname(created_at) month,
+count(*)
+       FROM posts
+       GROUP BY year, month;
