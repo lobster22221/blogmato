@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-
+use App\Models\User;
 class CreateUsersTable extends Migration {
 
 	/**
@@ -21,6 +21,13 @@ class CreateUsersTable extends Migration {
 			$table->string('remember_token', 100)->nullable();
 			$table->timestamps();
 		});
+		
+		$user = User::create([
+            'id' => 1,
+            'name' => 'admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('password')
+        ]);
 	}
 
 

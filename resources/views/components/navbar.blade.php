@@ -1,5 +1,5 @@
- <div class="blog-masthead">
-      <div class="container">
+ <div class="blog-masthead container-fluid">
+     
         <nav class="nav">
           <a class="nav-link active" href="#">Home</a>
           <a class="nav-link" href="#">About</a>
@@ -19,5 +19,5 @@
        
     
         </nav>
-      </div>
+      
     </div>

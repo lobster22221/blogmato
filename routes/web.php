@@ -26,6 +26,7 @@ Route::post('admin/posts/edit/{id}','PostsController@update');
 //profiles
 
 Route::get('/user','UsersController@index');
+Route::get('/user/settings','UsersController@settings');
 
 
 

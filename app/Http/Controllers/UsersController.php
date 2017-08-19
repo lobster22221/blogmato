@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use 
 class UsersController extends Controller
 {
     /**
@@ -13,8 +13,16 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        
+        return view('layouts.user.user');
     }
+
+
+    public function settings()
+    {
+    
+    }
+
 
     /**
      * Show the form for creating a new resource.
